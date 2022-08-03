@@ -3,17 +3,13 @@ import { computed, ref } from 'vue'
 export default {
   name: "cInput",
   props: {
-    disabled: {
-      type: Boolean,
-      default: false,
-    },
-    limit: {
-      type: Number,
-      default: 10,
+    errorMsg: {
+      type: String,
+      default: '',
     },
     modelValue: {
       type: String,
-      default: "",
+      default: '',
     },
     placeholder: {
       type: String,
@@ -25,8 +21,8 @@ export default {
     const input = ref(null);
     const isFocused = ref(false);
 
-    const isTextTooLong = computed(() => {
-      return props.modelValue.length > props.limit
+    const isError = computed(() => {
+      return props.errorMsg !== ''
     })
 
     const focusInput = () => {
@@ -40,9 +36,9 @@ export default {
 
     return {
       input,
+      isError,
       isFocused,
       focusInput,
-      isTextTooLong,
       isPlaceholderTop
     }
   }
@@ -54,7 +50,8 @@ export default {
 
     <div class="relative">
       <input ref="input"
-             :class="[isTextTooLong ? 'border-rose-500' : 'border-gray-400']"
+             v-bind="$attrs"
+             :class="[isError ? 'border-rose-500' : 'border-gray-400']"
              :value="modelValue"
              @input="$emit('update:modelValue', $event.target.value)"
              @focus="isFocused = true"
@@ -67,9 +64,9 @@ export default {
             class="duration-100 p-2 py-1 absolute left-4 -translate-y-1/2 bg-neutral-800 text-neutral-500 font-semibold">{{placeholder}}</span>
     </div>
 
-    <span v-if="isTextTooLong"
+    <span v-if="isError"
           class="px-1 w-full text-left inline-block text-rose-500 text-xs">
-      {{ $t('limited to {limit} chars', { limit: limit }) }}
+      {{ $t(`${errorMsg}`) }}
     </span>
   </div>
 </template>

@@ -20,9 +20,7 @@ export default {
 </script>
 
 <template>
-  <c-input v-model="myForm.name"
-           :limit="3"
-           placeholder="my-placeholder"/>
+  <c-input />
 </template>
 
 <style scoped>
