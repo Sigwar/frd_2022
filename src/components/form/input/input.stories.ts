@@ -19,6 +19,6 @@ export const SimpleWithPlaceholder: StoryFn<typeof cInput> = () => ({
     components: { cInput },
     template:
         `<div style="width: 250px">
-          <c-input placeholder="myPlaceholder" limit="0"/> 
+          <c-input placeholder="myPlaceholder" :limit="3"/> 
         </div>`
 })

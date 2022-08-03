@@ -54,17 +54,17 @@ export default {
 
     <div class="relative">
       <input ref="input"
-             :class="{'border-rose-500' : isTextTooLong}"
+             :class="[isTextTooLong ? 'border-rose-500' : 'border-gray-400']"
              :value="modelValue"
              @input="$emit('update:modelValue', $event.target.value)"
              @focus="isFocused = true"
              @focusout="isFocused = false"
-             class="rounded-lg py-4 border-gray-400 focus:border-indigo-600 border-2 bg-transparent px-2 outline-none w-full"/>
+             class="rounded-lg py-4 focus:border-indigo-600 border-2 bg-transparent px-2 outline-none w-full"/>
 
       <span v-if="placeholder"
             @click="focusInput"
-            :class="{'top-0' : isPlaceholderTop }"
-            class="duration-100 p-2 py-1 absolute top-1/2 left-4 -translate-y-1/2 bg-neutral-800 text-neutral-500 font-semibold">{{placeholder}}</span>
+            :class="[isPlaceholderTop ? 'top-0' : 'top-1/2' ]"
+            class="duration-100 p-2 py-1 absolute left-4 -translate-y-1/2 bg-neutral-800 text-neutral-500 font-semibold">{{placeholder}}</span>
     </div>
 
     <span v-if="isTextTooLong"
