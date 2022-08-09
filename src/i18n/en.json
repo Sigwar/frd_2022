@@ -1,3 +1,4 @@
 {
-  "hello":"Hello"
+  "hello":"Hello",
+  "limited to {limit} chars": "Limited to {limit} chars"
 }

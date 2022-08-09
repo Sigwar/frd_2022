@@ -1,11 +1,26 @@
 <script>
+import { reactive } from 'vue'
+import cInput from '@/components/form/input/input.component.vue'
+
 export default {
-  name: "vHome"
+  name: "vHome",
+  components: {
+    cInput
+  },
+  setup() {
+    const myForm = reactive({
+      name: ''
+    })
+
+    return {
+      myForm
+    }
+  }
 }
 </script>
 
 <template>
-<h1>{{ $t('hello') }}</h1>
+  <c-input />
 </template>
 
 <style scoped>
