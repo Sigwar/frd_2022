@@ -1,7 +1,7 @@
 <script>
 import { computed, ref } from 'vue'
 export default {
-  name: "cInput",
+  name: 'cInput',
   props: {
     errorMsg: {
       type: String,
@@ -19,7 +19,7 @@ export default {
   emits: ['update:modelValue'],
   setup(props) {
     const input = ref(null);
-    const isFocused = ref(false);
+    const isFocus = ref(false);
 
     const isError = computed(() => {
       return props.errorMsg !== ''
@@ -27,17 +27,17 @@ export default {
 
     const focusInput = () => {
       input.value.focus();
-      isFocused.value = true
+      isFocus.value = true
     }
 
     const isPlaceholderTop = computed(()=> {
-      return props.modelValue !== '' || isFocused.value
+      return props.modelValue !== '' || isFocus.value
     })
 
     return {
       input,
       isError,
-      isFocused,
+      isFocus,
       focusInput,
       isPlaceholderTop
     }
@@ -54,8 +54,8 @@ export default {
              :class="[isError ? 'border-rose-500' : 'border-gray-400']"
              :value="modelValue"
              @input="$emit('update:modelValue', $event.target.value)"
-             @focus="isFocused = true"
-             @focusout="isFocused = false"
+             @focus="isFocus = true"
+             @focusout="isFocus = false"
              class="rounded-lg py-4 focus:border-indigo-600 border-2 bg-transparent px-2 outline-none w-full"/>
 
       <span v-if="placeholder"
