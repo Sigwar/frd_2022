@@ -1,26 +1,33 @@
 <script>
-import { reactive } from 'vue'
+import {reactive, ref} from 'vue'
 import cInput from '@/components/form/input/input.component.vue'
+import cSelect from '@/components/form/select/select.component.vue'
 
 export default {
   name: "vHome",
   components: {
-    cInput
+    cInput,
+    cSelect
   },
   setup() {
     const myForm = reactive({
       name: ''
     })
+    const options = ref(['ASD', 'DSA', 'CEE', 'DFS'])
 
     return {
-      myForm
+      myForm,
+      options
     }
   }
 }
 </script>
 
 <template>
-  <c-input />
+  {{ myForm.name }}
+  <c-input v-model="myForm.name"/>
+
+  <c-select :options="options" v-model="myForm.name"/>
 </template>
 
 <style scoped>

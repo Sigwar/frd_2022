@@ -7,9 +7,9 @@ export default {
 }
 
 export const Default = (args) => ({
-    components: { cInput },
+    components: {cInput},
     setup() {
-        return { args }
+        return {args}
     },
     template:
         `<div style="width: 250px">
@@ -19,4 +19,4 @@ export const Default = (args) => ({
 
 
 export const DefaultWithParams = Default.bind({});
-DefaultWithParams.args = { errorMsg: 'My error msg', placeholder: 'myPlaceholder', disabled: true };
+DefaultWithParams.args = {errorMsg: 'My error msg', placeholder: 'myPlaceholder', disabled: true};
