@@ -57,7 +57,7 @@ export default {
              @input="$emit('update:modelValue', $event.target.value)"
              @focus="isFocus = true"
              @focusout="isFocus = false"
-             class="h-[60px] py-2 focus:border-indigo-600 border-2 bg-transparent px-2 outline-none w-full text-lg d-flex items-center"/>
+             class="h-[60px] py-2 focus:border-blue-700 border-2 bg-transparent px-2 outline-none w-full text-lg d-flex items-center"/>
 
       <span v-if="placeholder"
             @click="focusInput"

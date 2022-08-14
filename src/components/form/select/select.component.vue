@@ -10,11 +10,11 @@ export default {
     },
     placeholder: {
       type: String,
-      default: 'placeholder'
+      default: 'Select option'
     },
     options: {
       type: Array,
-      default: () => []
+      default: () => ['No Data']
     },
     tabIndex: {
       type: Number,
@@ -26,7 +26,7 @@ export default {
   setup(props) {
 
     const select = ref(null);
-    const isFocus = ref(true);
+    const isFocus = ref(false);
 
     const isPlaceholderTop = computed(() => {
       return props.modelValue !== '' || isFocus.value
@@ -41,7 +41,7 @@ export default {
 }
 </script>
 <template>
-  <div class="relative"
+  <div class="relative cursor-pointer"
        @blur="isFocus = false">
 
     <div ref="select"
@@ -51,7 +51,7 @@ export default {
          @input="$emit('update:modelValue', $event.target.value)"
          @click.self.stop="isFocus = true"
          @focusout="isFocus = false"
-         :class="{'border-indigo-600' : isFocus}"
+         :class="{'border-blue-700' : isFocus}"
          class="h-[60px] z-10 border-gray-400 py-2 border-2 bg-transparent px-2 outline-none w-full text-left text-lg flex items-center">
 
       <span class="">{{ modelValue }}</span>
@@ -67,7 +67,7 @@ export default {
 
     <Transition>
       <ul v-if="isFocus"
-          class="absolute w-full border-2 border-solid border-indigo-600 mt-1">
+          class="absolute w-full border-2 border-solid border-blue-700 mt-1">
 
         <li v-for="option in options"
             :key="option"
