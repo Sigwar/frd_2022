@@ -5,6 +5,9 @@ export default {
     title: 'Forms/cButton',
     component: cButton,
     argTypes: {
+        disabled: {
+            control: { type: 'boolean' }
+        },
         buttonState: {
             options: ['primary', 'second', 'danger', 'success'],
             control: {type: 'radio'},
