@@ -51,8 +51,8 @@ export default {
          @input="$emit('update:modelValue', $event.target.value)"
          @click.self.stop="isFocus = true"
          @focusout="isFocus = false"
-         :class="{'border-blue-700' : isFocus}"
-         class="h-[60px] z-10 border-gray-400 py-2 border-2 bg-transparent px-2 outline-none w-full text-left text-lg flex items-center">
+         :class="[isFocus ? 'border-blue-700' : 'border-gray-400']"
+         class="h-[60px] z-10 py-2 border-2 bg-transparent px-2 outline-none w-full text-left text-lg flex items-center">
 
       <span class="">{{ modelValue }}</span>
     </div>
@@ -72,7 +72,8 @@ export default {
         <li v-for="option in options"
             :key="option"
             @click="$emit('update:modelValue', option)"
-            class="px-2 cursor-pointer py-2 hover:bg-slate-400/10 text-lg text-left">{{ option }}
+            class="px-2 cursor-pointer py-2 hover:bg-gray-200 text-lg text-left bg-white dark:bg-neutral-800 dark:hover:text-black">
+          {{ option }}
         </li>
       </ul>
     </Transition>

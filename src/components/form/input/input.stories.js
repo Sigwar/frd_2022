@@ -12,9 +12,10 @@ export const Default = (args) => ({
         return {args}
     },
     template:
-        `<div style="width: 250px">
-            <c-input v-bind="args" />
-        </div>`
+        `
+          <div style="width: 250px">
+          <c-input v-bind="args"/>
+          </div>`
 })
 
 
