@@ -1,4 +1,5 @@
 {
   "hello": "Hello",
-  "limited to {limit} chars": "Limited to {limit} chars"
+  "limited to {limit} chars": "Limited to {limit} chars",
+  "click me": "Click me"
 }
