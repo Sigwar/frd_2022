@@ -1,5 +1,6 @@
 <script>
-import { computed, ref } from 'vue'
+import {computed, ref} from 'vue'
+
 export default {
   name: 'cInput',
   props: {
@@ -30,7 +31,7 @@ export default {
       isFocus.value = true
     }
 
-    const isPlaceholderTop = computed(()=> {
+    const isPlaceholderTop = computed(() => {
       return props.modelValue !== '' || isFocus.value
     })
 
@@ -56,12 +57,12 @@ export default {
              @input="$emit('update:modelValue', $event.target.value)"
              @focus="isFocus = true"
              @focusout="isFocus = false"
-             class="rounded-lg py-4 focus:border-indigo-600 border-2 bg-transparent px-2 outline-none w-full"/>
+             class="h-[60px] py-2 focus:border-indigo-600 border-2 bg-transparent px-2 outline-none w-full text-lg d-flex items-center"/>
 
       <span v-if="placeholder"
             @click="focusInput"
             :class="[isPlaceholderTop ? 'top-0' : 'top-1/2' ]"
-            class="duration-100 p-2 py-1 absolute left-4 -translate-y-1/2 bg-neutral-800 text-neutral-500 font-semibold">{{placeholder}}</span>
+            class="text-lg duration-100 p-2 py-1 absolute left-4 -translate-y-1/2 bg-white dark:bg-neutral-800 text-neutral-500 font-semibold">{{ placeholder }}</span>
     </div>
 
     <span v-if="isError"

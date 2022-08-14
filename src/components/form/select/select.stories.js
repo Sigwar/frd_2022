@@ -19,4 +19,8 @@ export const Default = (args) => ({
 })
 
 export const DefaultWithParams = Default.bind({});
-DefaultWithParams.args = {placeholder: 'Select option', modelValue: 'Option 1', options: ['Option 1', 'Option2', 'Option3']}
+DefaultWithParams.args = {
+    placeholder: 'Select option',
+    modelValue: 'Option 1',
+    options: ['Option 1', 'Option 2', 'Option 3']
+}
