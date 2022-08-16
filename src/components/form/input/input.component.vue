@@ -57,12 +57,14 @@ export default {
              @input="$emit('update:modelValue', $event.target.value)"
              @focus="isFocus = true"
              @focusout="isFocus = false"
-             class="h-[60px] py-2 focus:border-blue-700 border-2 bg-transparent px-2 outline-none w-full text-lg d-flex items-center"/>
+             class="h-[60px] py-2 focus:border-blue-700 border-2 bg-transparent px-2 outline-none w-full text-lg d-flex items-center disabled:opacity-75"/>
 
       <span v-if="placeholder"
             @click="focusInput"
             :class="[isPlaceholderTop ? 'top-0' : 'top-1/2' ]"
-            class="text-lg duration-100 p-2 py-1 absolute left-4 -translate-y-1/2 bg-white dark:bg-neutral-800 text-neutral-500 font-semibold">{{ placeholder }}</span>
+            class="text-lg duration-100 p-2 py-1 absolute left-4 -translate-y-1/2 bg-white dark:bg-neutral-800 text-neutral-500 font-semibold">{{
+          placeholder
+        }}</span>
     </div>
 
     <span v-if="isError"
