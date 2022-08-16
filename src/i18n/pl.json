@@ -1,3 +1,13 @@
 {
-  "hello": "Witam"
+  "hello": "Witam",
+  "sign in": "Zaloguj się",
+  "sign up": "Zarejestruj sie",
+  "limited to {limit} chars": "Maksymalna ilość znaków to {limit}",
+  "click me": "Kliknij mnie",
+  "nick": "Nick",
+  "email": "E-mail",
+  "repeat password": "Powtórz hasło",
+  "password": "Hasło",
+  "register account": "Zarejestruj konto",
+  "fifa season {number}": "fifa sezon {number}"
 }

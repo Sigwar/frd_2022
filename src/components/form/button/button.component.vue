@@ -32,7 +32,7 @@ export default {
        scoped>
 .primary {
   &.filled {
-    @apply bg-blue-700 hover:bg-blue-700/80 border-2 border-blue-700 hover:border-blue-700/80
+    @apply bg-blue-700 border-2 border-blue-700 hover:border-blue-700/80 hover:bg-blue-700/80
   }
 
   &.ghost {
@@ -45,13 +45,13 @@ export default {
 
   &.ghost,
   &.borderless {
-    @apply dark:text-white hover:text-white hover:bg-blue-700 text-black
+    @apply hover:text-white hover:bg-blue-700 text-black
   }
 }
 
 .second {
   &.filled {
-    @apply bg-white hover:bg-gray-100/80 text-black border-gray-100 border-2 dark:bg-white dark:hover:bg-white/90
+    @apply bg-white text-black border-gray-100 border-2 hover:bg-gray-100/80 dark:bg-white dark:hover:bg-white/90
   }
 
   &.ghost {
@@ -64,13 +64,13 @@ export default {
 
   &.ghost,
   &.borderless {
-    @apply dark:text-white bg-transparent dark:hover:bg-white dark:hover:text-black text-black hover:bg-gray-100
+    @apply bg-transparent text-black hover:bg-gray-100 dark:hover:text-black
   }
 }
 
 .success {
   &.filled {
-    @apply bg-green-500 hover:bg-green-500/80 border-2 border-green-500 hover:border-green-500/80;
+    @apply bg-green-500 border-2 border-green-500 hover:bg-green-500/80 hover:border-green-500/80;
   }
 
   &.ghost {
@@ -83,13 +83,13 @@ export default {
 
   &.ghost,
   &.borderless {
-    @apply dark:text-white hover:bg-green-500 text-black hover:text-white
+    @apply text-black hover:bg-green-500 hover:text-white
   }
 }
 
 .danger {
   &.filled {
-    @apply bg-rose-500 hover:bg-rose-500/80 border-2 border-rose-500/80 hover:border-rose-500/80
+    @apply bg-rose-500 border-2 border-rose-500/80 hover:bg-rose-500/80 hover:border-rose-500/80
   }
 
   &.ghost {
@@ -97,12 +97,12 @@ export default {
   }
 
   &.borderless {
-    @apply hover:border-rose-500 border-transparent;
+    @apply border-transparent hover:border-rose-500;
   }
 
   &.ghost,
   &.borderless {
-    @apply dark:text-white text-black hover:text-white hover:bg-rose-500
+    @apply text-black hover:text-white hover:bg-rose-500
   }
 }
 .primary,

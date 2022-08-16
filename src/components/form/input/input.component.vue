@@ -62,9 +62,8 @@ export default {
       <span v-if="placeholder"
             @click="focusInput"
             :class="[isPlaceholderTop ? 'top-0' : 'top-1/2' ]"
-            class="text-lg duration-100 p-2 py-1 absolute left-4 -translate-y-1/2 bg-white dark:bg-neutral-800 text-neutral-500 font-semibold">{{
-          placeholder
-        }}</span>
+            class="text-lg duration-100 p-2 py-1 absolute left-4 -translate-y-1/2 bg-white text-neutral-500 font-semibold">
+        {{ placeholder }}</span>
     </div>
 
     <span v-if="isError"
