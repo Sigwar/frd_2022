@@ -32,11 +32,11 @@ export default {
        scoped>
 .primary {
   &.filled {
-    @apply bg-blue-700 border-2 border-blue-700 hover:border-blue-700/80 hover:bg-blue-700/80
+    @apply bg-primary-500 border-2 border-primary-500 hover:border-primary-500/80 hover:bg-primary-500/80
   }
 
   &.ghost {
-    @apply border-blue-700
+    @apply border-primary-500
   }
 
   &.borderless {
@@ -45,7 +45,7 @@ export default {
 
   &.ghost,
   &.borderless {
-    @apply hover:text-white hover:bg-blue-700 text-black
+    @apply hover:text-white hover:bg-primary-500 text-black
   }
 }
 

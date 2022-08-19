@@ -57,7 +57,7 @@ export default {
              @input="$emit('update:modelValue', $event.target.value)"
              @focus="isFocus = true"
              @focusout="isFocus = false"
-             class="h-[60px] py-2 focus:border-blue-700 border-2 bg-transparent px-2 outline-none w-full text-lg d-flex items-center disabled:opacity-75"/>
+             class="h-[60px] py-2 focus:border-primary-500 border-2 bg-transparent px-2 outline-none w-full text-lg d-flex items-center disabled:opacity-75"/>
 
       <span v-if="placeholder"
             @click="focusInput"
@@ -67,7 +67,7 @@ export default {
     </div>
 
     <span v-if="isError"
-          class="px-1 w-full text-left inline-block text-rose-500 text-xs">
+          class="px-1 w-full text-left inline-block text-rose-500">
       {{ $t(`${errorMsg}`) }}
     </span>
   </div>

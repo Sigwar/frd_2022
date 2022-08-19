@@ -9,5 +9,11 @@
   "repeat password": "Powtórz hasło",
   "password": "Hasło",
   "register account": "Zarejestruj konto",
-  "fifa season {number}": "fifa sezon {number}"
+  "season {number}": "sezon {number}",
+  "antologic": "Antologic",
+  "not enough characters": "Za mało znaków",
+  "wrong email": "Niepoprawny adres email",
+  "password is to weak": "Hasło jest zbyt słabe",
+  "password do not match": "Hasła nie pasują do siebie",
+  "return to login page": "Wróc do strony logowania"
 }
