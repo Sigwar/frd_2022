@@ -51,7 +51,7 @@ export default {
          @input="$emit('update:modelValue', $event.target.value)"
          @click.self.stop="isFocus = true"
          @focusout="isFocus = false"
-         :class="[isFocus ? 'border-blue-700' : 'border-gray-400']"
+         :class="[isFocus ? 'border-primary-500' : 'border-gray-400']"
          class="h-[60px] z-10 py-2 border-2 bg-transparent px-2 outline-none w-full text-left text-lg flex items-center">
 
       <span class="">{{ modelValue }}</span>
@@ -67,7 +67,7 @@ export default {
 
     <Transition>
       <ul v-if="isFocus"
-          class="absolute w-full border-2 border-solid border-blue-700 mt-1">
+          class="absolute w-full border-2 border-solid border-primary-500 mt-1">
 
         <li v-for="option in options"
             :key="option"
