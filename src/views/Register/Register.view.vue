@@ -2,20 +2,23 @@
 import cCard from '@/components/card/card.component.vue';
 import cInput from '@/components/form/input/input.component.vue';
 import cButton from '@/components/form/button/button.component.vue'
+import cSeasonInfo from '@/components/seasonInfo/season-info.component.vue';
+
 import { useRegister } from './hooks/useRegister.js';
 
 export default {
   name: 'vRegister',
   components: {
+    cButton,
     cCard,
     cInput,
-    cButton,
+    cSeasonInfo
   },
   setup() {
 
-    const { form, errorMsg, registerUser } = useRegister();
+    const { form, errorMsg, registerUser, goToLoginPage } = useRegister();
 
-    return {form, errorMsg, registerUser}
+    return { form, errorMsg, registerUser, goToLoginPage }
   }
 }
 </script>
@@ -23,21 +26,13 @@ export default {
 
 <template>
   <main class="w-full flex items-center justify-center">
-    <c-card>
-      <aside
-          class="relative z-0 py-4 overflow-hidden w-full justify-center items-center md:flex md:w-6/12 bg-gray-400 bg-cover bg-soccer flex-col">
-        <div class="bg absolute"></div>
-        <div class="bg bg2 absolute"></div>
-        <div class="bg bg3 absolute"></div>
-        <h1 class="text-white text-4xl sm:text-7xl font-bold uppercase">{{ $t('antologic') }}</h1>
-        <h2 class="text-white text-2xl sm:text-4xl font-thin uppercase font-second tracking-widest">
-          {{ $t('season {number}', {number: 1}) }}</h2>
-      </aside>
+    <c-card class="min-h-[70%]">
+      <c-season-info />
 
       <div class="w-full p-6 text-black flex flex-col justify-between md:w-6/12">
         <h1 class="text-4xl sm:text-7xl"> {{ $t('sign up') }}</h1>
 
-        <div class="">
+        <div>
           <c-input v-model="form.nick"
                    :error-msg="errorMsg.nick"
                    :placeholder="$t('nick')"/>
@@ -64,7 +59,8 @@ export default {
 
           <c-button class="mt-3"
                     button-type="borderless"
-                    button-state="second">{{ $t('return to login page') }}
+                    button-state="second"
+                    @click="goToLoginPage">{{ $t('return to login page') }}
           </c-button>
         </div>
       </div>

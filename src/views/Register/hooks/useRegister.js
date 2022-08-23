@@ -1,8 +1,10 @@
 import {reactive, watch} from 'vue';
 import axios from 'axios'
-import {minChars, validateEmail} from "./rules";
+import {minChars, validateEmail, validateField, validateSame} from '../../../hook/rules.js';
+import { useRouter } from 'vue-router'
 
 export const useRegister = () => {
+    const router = useRouter()
 
     const min = reactive({
         nick: 3,
@@ -32,44 +34,24 @@ export const useRegister = () => {
     })
 
     watch(() => form.repeatPassword, newValue => {
-        if (newValue.length < min.password) {
-            errorMsg.repeatPassword = 'password is to weak'
-        } else if (newValue !== form.password) {
-            errorMsg.repeatPassword = 'password do not match'
-        } else {
-            errorMsg.repeatPassword = ''
-            errorMsg.password = ''
-        }
+        errorMsg.repeatPassword = validateField('password', newValue, min.password)
+        errorMsg.repeatPassword = validateSame('password', newValue, form.repeatPassword)
     })
 
     watch(() => form.password, newValue => {
-        if (newValue.length < min.password) {
-            errorMsg.password = 'password is to weak'
-        } else if (newValue !== form.repeatPassword) {
-            errorMsg.password = 'password do not match'
-        } else {
-            errorMsg.repeatPassword = ''
-            errorMsg.password = ''
-        }
+        errorMsg.password = validateField('password', newValue, min.password)
+        errorMsg.password = validateSame('password', newValue, form.repeatPassword)
     })
 
     const validateForm = () => {
         validateEmail(form.email) ? errorMsg.email = 'wrong email' : errorMsg.email = ''
         minChars(form.nick, min.nick) ? errorMsg.nick = `not enough characters` : errorMsg.nick = ''
-        if (form.password.length < min.password) {
-            errorMsg.password = 'password is to weak'
-        } else if (form.repeatPassword !== form.repeatPassword) {
-            errorMsg.password = 'password do not match'
-        } else {
-            errorMsg.password = ''
-        }
-        if (form.password.length < min.password) {
-            errorMsg.repeatPassword = 'password is to weak'
-        } else if (form.password !== form.password) {
-            errorMsg.repeatPassword = 'password do not match'
-        } else {
-            errorMsg.repeatPassword = ''
-        }
+
+        errorMsg.password = validateField('password', form.password, min.password)
+        errorMsg.password = validateSame('password', form.password, form.repeatPassword)
+
+        errorMsg.repeatPassword = validateField('repeatPassword', form.repeatPassword, min.password)
+        errorMsg.repeatPassword = validateSame('password', form.password, form.repeatPassword)
     }
 
     const registerUser = async () => {
@@ -87,9 +69,14 @@ export const useRegister = () => {
         }
     }
 
+    const goToLoginPage = () => {
+        router.push({name: 'Login'})
+    }
+
     return {
         form,
         errorMsg,
-        registerUser
+        registerUser,
+        goToLoginPage
     }
 }
