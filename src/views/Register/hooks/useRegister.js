@@ -1,4 +1,5 @@
 import {reactive, watch} from 'vue';
+import axios from 'axios'
 import {minChars, validateEmail} from "./rules";
 
 export const useRegister = () => {
@@ -50,7 +51,6 @@ export const useRegister = () => {
             errorMsg.repeatPassword = ''
             errorMsg.password = ''
         }
-
     })
 
     const validateForm = () => {
@@ -72,15 +72,18 @@ export const useRegister = () => {
         }
     }
 
-    const registerUser = () => {
+    const registerUser = async () => {
         validateForm()
         if ((errorMsg.password === '') &&
             (errorMsg.repeatPassword  === '') &&
             (errorMsg.email === '') &&
             (errorMsg.nick === '')) {
-            console.log('Jest OK')
-        } else {
-            console.log('Nie jest OK')
+            try {
+                await axios.post('/api/register', form)
+                //TODO NOTYFIKACJA Z MSG SUCCESS
+            } catch (e) {
+                //TODO NOTYFIKACJA Z MSG ERROR
+            }
         }
     }
 
