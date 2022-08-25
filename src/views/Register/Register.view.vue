@@ -4,7 +4,7 @@ import cInput from '@/components/form/input/input.component.vue';
 import cButton from '@/components/form/button/button.component.vue'
 import cSeasonInfo from '@/components/seasonInfo/season-info.component.vue';
 
-import { useRegister } from './hooks/useRegister.js';
+import { useRegister } from './hooks/useRegister.ts';
 
 export default {
   name: 'vRegister',

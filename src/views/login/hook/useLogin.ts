@@ -1,16 +1,17 @@
 import {reactive, watch} from 'vue';
 import { useRouter } from 'vue-router'
-import { validateField } from '../../../hook/rules.js';
+import { validateField } from '../../../hook/rules';
+import { TLoginForm } from './login.types'
 
 export const useLogin = () => {
     const router = useRouter()
 
-    const form = reactive({
+    const form: TLoginForm = reactive({
         nick: '',
         password: ''
     })
 
-    const errorMsg = reactive({
+    const errorMsg: TLoginForm = reactive({
         nick: '',
         password: '',
     })
@@ -23,7 +24,7 @@ export const useLogin = () => {
         errorMsg.password = validateField('password', newValue, 6)
     })
     
-    const loginUser = () => {
+    const loginUser = (): void => {
         errorMsg.nick = validateField('nick', form.nick, 3)
         errorMsg.password = validateField('password', form.password, 6)
         if(errorMsg.nick === '' && errorMsg.password === '') {
@@ -31,7 +32,7 @@ export const useLogin = () => {
         }
     }
 
-    const goToRegisterPage = () => {
+    const goToRegisterPage = (): void => {
         router.push({name: 'Register'})
     }
 

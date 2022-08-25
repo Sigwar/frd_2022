@@ -1,24 +1,25 @@
 import {reactive, watch} from 'vue';
 import axios from 'axios'
-import {minChars, validateEmail, validateField, validateSame} from '../../../hook/rules.js';
+import {rulesSettingsChars, validateEmail, validateField, validateSame} from '../../../hook/rules';
 import { useRouter } from 'vue-router'
+import {TRegisterForm, TRulesSettings} from './register.types';
 
 export const useRegister = () => {
     const router = useRouter()
 
-    const min = reactive({
+    const rulesSettings: TRulesSettings = reactive({
         nick: 3,
         password: 6
     })
 
-    const form = reactive({
+    const form: TRegisterForm = reactive({
         email: '',
         nick: '',
         password: '',
         repeatPassword: '',
     });
 
-    const errorMsg = reactive({
+    const errorMsg: TRegisterForm = reactive({
         email: '',
         password: '',
         nick: '',
@@ -30,31 +31,31 @@ export const useRegister = () => {
     })
 
     watch(() => form.nick, newValue => {
-        minChars(newValue, min.nick) ? errorMsg.nick = `not enough characters` : errorMsg.nick = ''
+        rulesSettingsChars(newValue, rulesSettings.nick) ? errorMsg.nick = `not enough characters` : errorMsg.nick = ''
     })
 
     watch(() => form.repeatPassword, newValue => {
-        errorMsg.repeatPassword = validateField('password', newValue, min.password)
+        errorMsg.repeatPassword = validateField('password', newValue, rulesSettings.password)
         errorMsg.repeatPassword = validateSame('password', newValue, form.repeatPassword)
     })
 
     watch(() => form.password, newValue => {
-        errorMsg.password = validateField('password', newValue, min.password)
+        errorMsg.password = validateField('password', newValue, rulesSettings.password)
         errorMsg.password = validateSame('password', newValue, form.repeatPassword)
     })
 
     const validateForm = () => {
         validateEmail(form.email) ? errorMsg.email = 'wrong email' : errorMsg.email = ''
-        minChars(form.nick, min.nick) ? errorMsg.nick = `not enough characters` : errorMsg.nick = ''
+        rulesSettingsChars(form.nick, rulesSettings.nick) ? errorMsg.nick = `not enough characters` : errorMsg.nick = ''
 
-        errorMsg.password = validateField('password', form.password, min.password)
+        errorMsg.password = validateField('password', form.password, rulesSettings.password)
         errorMsg.password = validateSame('password', form.password, form.repeatPassword)
 
-        errorMsg.repeatPassword = validateField('repeatPassword', form.repeatPassword, min.password)
+        errorMsg.repeatPassword = validateField('repeatPassword', form.repeatPassword, rulesSettings.password)
         errorMsg.repeatPassword = validateSame('password', form.password, form.repeatPassword)
     }
 
-    const registerUser = async () => {
+    const registerUser = async (): Promise<void> => {
         validateForm()
         if ((errorMsg.password === '') &&
             (errorMsg.repeatPassword  === '') &&
@@ -69,7 +70,7 @@ export const useRegister = () => {
         }
     }
 
-    const goToLoginPage = () => {
+    const goToLoginPage = (): void => {
         router.push({name: 'Login'})
     }
 

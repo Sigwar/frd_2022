@@ -3,10 +3,10 @@ import cButton from '@/components/form/button/button.component.vue';
 import cCard from '@/components/card/card.component.vue';
 import cInput from '@/components/form/input/input.component.vue';
 import cSeasonInfo from '@/components/seasonInfo/season-info.component.vue';
-import {useLogin} from './hook/useLogin.js'
+import {useLogin} from './hook/useLogin.ts'
 
 export default {
-  name: "vLogin",
+  name: 'vLogin',
   components: {
     cButton,
     cCard,
@@ -23,10 +23,10 @@ export default {
 
 <template>
   <main class="w-full flex items-center justify-center">
-    <c-card class="min-h-[70%]">
+    <c-card class="min-h-[70%] justify-between">
       <c-season-info/>
 
-      <div class="w-full p-6 text-black flex flex-col justify-between md:w-6/12">
+      <div class="w-full p-6 text-black flex flex-col justify-between h-[50vh] md:h-auto md:w-6/12">
         <h1 class="text-4xl sm:text-7xl">{{ $t('sign in') }}</h1>
 
         <div>
