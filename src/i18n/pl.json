@@ -15,5 +15,10 @@
   "wrong email": "Niepoprawny adres email",
   "password is to weak": "Hasło jest zbyt słabe",
   "password do not match": "Hasła nie pasują do siebie",
-  "return to login page": "Wróc do strony logowania"
+  "return to login page": "Wróc do strony logowania",
+  "register new user": "Zarejestruj nowe konto",
+  "nick is required": "Nick jest wymagany",
+  "password is required": "Hasło jest wymagane",
+  "nick is to short": "Nick jest zbyt krótki",
+  "password is to short": "Hasło jest zbyt krótkie"
 }
