@@ -1,4 +1,4 @@
-import {createRouter, createWebHistory} from 'vue-router';
+import {createRouter, createWebHistory, Router} from 'vue-router';
 import vRegister from '@/views/register/Register.view.vue'
 import vDashboard from '@/views/dashboard/Dashboard.view.vue'
 import vLogin from '@/views/login/Login.view.vue';
@@ -21,7 +21,7 @@ const routes = [
     }
 ]
 
-const router = createRouter({
+const router: Router = createRouter({
     history: createWebHistory(),
     routes
 })

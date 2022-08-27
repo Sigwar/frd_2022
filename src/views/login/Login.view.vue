@@ -23,7 +23,7 @@ export default defineComponent( {
 </script>
 
 <template>
-  <main class="w-full flex items-center justify-center">
+  <main class="w-full flex items-center justify-center mx-auto md:w-10/12">
     <c-card class="min-h-[70%] justify-between">
       <c-season-info/>
 
