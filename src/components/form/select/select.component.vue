@@ -1,7 +1,7 @@
-<script>
-import {computed, ref} from 'vue'
+<script lang="ts">
+import {computed, defineComponent, ref} from 'vue'
 
-export default {
+export default defineComponent({
   name: 'cSelect',
   props: {
     modelValue: {
@@ -25,7 +25,7 @@ export default {
 
   setup(props) {
 
-    const select = ref(null);
+    const select = ref<HTMLElement | null>(null)
     const isFocus = ref(false);
 
     const isPlaceholderTop = computed(() => {
@@ -38,7 +38,7 @@ export default {
       isPlaceholderTop
     }
   }
-}
+})
 </script>
 <template>
   <div class="relative cursor-pointer"
@@ -69,8 +69,8 @@ export default {
       <ul v-if="isFocus"
           class="absolute w-full border-2 border-solid border-primary-500 mt-1">
 
-        <li v-for="option in options"
-            :key="option"
+        <li v-for="(option, index) in options"
+            :key="index"
             @click="$emit('update:modelValue', option)"
             class="px-2 cursor-pointer py-2 hover:bg-gray-200 text-lg text-left bg-white dark:bg-neutral-800 dark:hover:text-black">
           {{ option }}

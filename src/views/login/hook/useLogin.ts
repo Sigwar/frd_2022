@@ -7,27 +7,27 @@ export const useLogin = () => {
     const router = useRouter()
 
     const form: TLoginForm = reactive({
-        nick: '',
+        login: '',
         password: ''
     })
 
     const errorMsg: TLoginForm = reactive({
-        nick: '',
+        login: '',
         password: '',
     })
 
-    watch(() => form.nick, newValue => {
-        errorMsg.nick = validateField('nick', newValue, 3)
+    watch(() => form.login, newValue => {
+        errorMsg.login = validateField('login', newValue, 3)
     })
 
     watch(() => form.password, newValue => {
         errorMsg.password = validateField('password', newValue, 6)
     })
-    
+
     const loginUser = (): void => {
-        errorMsg.nick = validateField('nick', form.nick, 3)
+        errorMsg.login = validateField('login', form.login, 3)
         errorMsg.password = validateField('password', form.password, 6)
-        if(errorMsg.nick === '' && errorMsg.password === '') {
+        if(errorMsg.login === '' && errorMsg.password === '') {
             console.log('jest git')
         }
     }

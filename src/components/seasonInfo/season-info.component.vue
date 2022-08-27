@@ -1,3 +1,17 @@
+<script lang="ts">
+import {defineComponent} from 'vue';
+
+export default defineComponent( {
+  name: 'cSeasonInfo',
+  props: {
+    season: {
+      type: String,
+      default: () => '1'
+    }
+  }
+})
+</script>
+
 <template>
   <aside
       class="relative z-0 py-4 overflow-hidden w-full justify-center items-center md:flex md:w-6/12 bg-gray-400 bg-cover bg-soccer flex-col">
@@ -9,18 +23,6 @@
       {{ $t('season {number}', { number: season }) }}</h2>
   </aside>
 </template>
-
-<script>
-export default {
-  name: 'cSeasonInfo',
-  props: {
-    season: {
-      type: String,
-      default: () => '1'
-    }
-  }
-}
-</script>
 
 <style lang="scss"
        scoped>

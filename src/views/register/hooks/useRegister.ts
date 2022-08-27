@@ -8,21 +8,21 @@ export const useRegister = () => {
     const router = useRouter()
 
     const rulesSettings: TRulesSettings = reactive({
-        nick: 3,
+        login: 3,
         password: 6
     })
 
     const form: TRegisterForm = reactive({
-        email: '',
-        nick: '',
-        password: '',
-        repeatPassword: '',
+        login: 'admin',
+        email: 'a@a.pl',
+        password: '123qwe',
+        repeatPassword: '123qwe',
     });
 
     const errorMsg: TRegisterForm = reactive({
         email: '',
         password: '',
-        nick: '',
+        login: '',
         repeatPassword: ''
     });
 
@@ -30,23 +30,25 @@ export const useRegister = () => {
         validateEmail(newValue) ? errorMsg.email = 'wrong email' : errorMsg.email = ''
     })
 
-    watch(() => form.nick, newValue => {
-        rulesSettingsChars(newValue, rulesSettings.nick) ? errorMsg.nick = `not enough characters` : errorMsg.nick = ''
+    watch(() => form.login, newValue => {
+        rulesSettingsChars(newValue, rulesSettings.login) ? errorMsg.login = `not enough characters` : errorMsg.login = ''
     })
 
     watch(() => form.repeatPassword, newValue => {
         errorMsg.repeatPassword = validateField('password', newValue, rulesSettings.password)
         errorMsg.repeatPassword = validateSame('password', newValue, form.repeatPassword)
+        errorMsg.password = validateSame('password', newValue, form.repeatPassword)
     })
 
     watch(() => form.password, newValue => {
         errorMsg.password = validateField('password', newValue, rulesSettings.password)
         errorMsg.password = validateSame('password', newValue, form.repeatPassword)
+        errorMsg.repeatPassword = validateSame('password', newValue, form.repeatPassword)
     })
 
     const validateForm = () => {
         validateEmail(form.email) ? errorMsg.email = 'wrong email' : errorMsg.email = ''
-        rulesSettingsChars(form.nick, rulesSettings.nick) ? errorMsg.nick = `not enough characters` : errorMsg.nick = ''
+        rulesSettingsChars(form.login, rulesSettings.login) ? errorMsg.login = `not enough characters` : errorMsg.login = ''
 
         errorMsg.password = validateField('password', form.password, rulesSettings.password)
         errorMsg.password = validateSame('password', form.password, form.repeatPassword)
@@ -60,9 +62,10 @@ export const useRegister = () => {
         if ((errorMsg.password === '') &&
             (errorMsg.repeatPassword  === '') &&
             (errorMsg.email === '') &&
-            (errorMsg.nick === '')) {
+            (errorMsg.login === '')) {
             try {
-                await axios.post('/api/register', form)
+                await axios.get('/api/home',)
+                await axios.post('/api/signUp', form)
                 //TODO NOTYFIKACJA Z MSG SUCCESS
             } catch (e) {
                 //TODO NOTYFIKACJA Z MSG ERROR

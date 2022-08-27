@@ -1,23 +1,25 @@
-<script>
-export default {
+<script lang="ts">
+import {defineComponent} from 'vue';
+
+export default defineComponent( {
   name: 'cButton',
   props: {
     buttonType: {
       type: String,
       default: 'filled',
-      validator(value) {
+      validator(value: string) {
         return ['filled', 'ghost', 'borderless'].includes(value)
       },
     },
     buttonState: {
       type: String,
       default: 'primary',
-      validator(value) {
+      validator(value: string) {
         return ['primary', 'second', 'danger', 'success'].includes(value)
       },
     }
   }
-}
+})
 </script>
 
 <template>

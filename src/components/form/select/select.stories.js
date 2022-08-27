@@ -1,7 +1,7 @@
 import cSelect from './select.component.vue';
 import '../../../style.css';
 
-export default {
+export default defineComponent( {
     title: 'Components/Forms/cSelect',
     component: cSelect
 }
