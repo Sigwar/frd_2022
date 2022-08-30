@@ -1,8 +1,8 @@
-import {reactive, watch} from 'vue';
+import { reactive, watch } from 'vue';
 import axios from 'axios'
-import {rulesSettingsChars, validateEmail, validateField, validateSame} from '../../../hook/rules';
+import { rulesSettingsChars, validateEmail, validateField, validateSame } from '@/hook/rules';
 import { useRouter } from 'vue-router'
-import {TRegisterForm, TRulesSettings} from './register.types';
+import { TRegisterForm, TRulesSettings } from './register.types';
 
 export const useRegister = () => {
     const router = useRouter()
@@ -13,10 +13,10 @@ export const useRegister = () => {
     })
 
     const form: TRegisterForm = reactive({
-        login: 'admin',
-        email: 'a@a.pl',
-        password: '123qwe',
-        repeatPassword: '123qwe',
+        login: '',
+        email: '',
+        password: '',
+        repeatPassword: '',
     });
 
     const errorMsg: TRegisterForm = reactive({
@@ -64,10 +64,10 @@ export const useRegister = () => {
             (errorMsg.email === '') &&
             (errorMsg.login === '')) {
             try {
-                await axios.get('/api/home',)
                 await axios.post('/api/signUp', form)
-                //TODO NOTYFIKACJA Z MSG SUCCESS
+                await router.push({name: 'Login'})
             } catch (e) {
+                console.error(e.response.data)
                 //TODO NOTYFIKACJA Z MSG ERROR
             }
         }

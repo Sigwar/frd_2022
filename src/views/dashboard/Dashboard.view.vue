@@ -1,20 +1,34 @@
 <script lang="ts">
-import {defineComponent} from 'vue';
+import { onBeforeMount, defineComponent } from 'vue';
 import navBar from '@/components/navbar/nav-bar.component.vue'
+import {useGlobalStore} from '@/store/global';
+import { useRouter } from "vue-router";
 
 export default defineComponent({
-  name: "vDashboard",
+  name: 'vDashboard',
   components: {
     navBar
+  },
+  setup() {
+    const storeGlobal = useGlobalStore();
+    const router = useRouter();
+
+    onBeforeMount(() => {
+      storeGlobal.setTokenFromCookie()
+      if(storeGlobal.token === '') {
+        router.push({ name: 'Login'})
+      }
+    })
   }
 });
 </script>
 
 <template>
   <nav-bar />
-<div>
-  ASD
-</div>
+
+  <div class="container">
+    <router-view />
+  </div>
 </template>
 
 <style lang="scss"

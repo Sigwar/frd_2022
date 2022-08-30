@@ -1,6 +1,8 @@
 <script lang="ts">
-import {defineComponent, reactive} from 'vue';
+import { defineComponent, reactive } from 'vue';
 import baseIcon from '@/components/base-icon/base-icon.component.vue';
+import { useGlobalStore } from '@/store/global';
+import { useRouter } from 'vue-router';
 
 export default defineComponent({
   name: 'navBar',
@@ -8,12 +10,18 @@ export default defineComponent({
     baseIcon
   },
   setup() {
+    const store = useGlobalStore();
+    const router = useRouter();
+
     const navBar = reactive({
       links: ['seasons', 'tournament', 'ranking', 'settings', 'logout']
     })
 
     const goTo = (link: string): void => {
-      console.log(link)
+      if(link === 'logout') {
+        store.logOut();
+        router.push({name: 'Login'})
+      }
     }
 
     return {
@@ -25,7 +33,7 @@ export default defineComponent({
 </script>
 
 <template>
-<nav class="cursor-pointer absolute top-0 left-0 w-24 flex flex-col h-[100vh] items-center justify-center border-r-2 border-solid border-neutral-200 dark:border-neutral-700">
+<nav class="cursor-pointer top-0 left-0 w-24 flex flex-col h-[100vh] items-center justify-center border-r-2 border-solid border-neutral-200 dark:border-neutral-700">
 
   <base-icon v-for="link in navBar.links"
              :key="link"

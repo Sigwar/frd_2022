@@ -27,7 +27,6 @@ export default defineComponent( {
     })
 
     const focusInput = () => {
-      console.log(input)
       if (input && input.value) {
         input.value.focus();
       }

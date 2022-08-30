@@ -23,7 +23,7 @@ export default defineComponent( {
 </script>
 
 <template>
-  <main class="w-full flex items-center justify-center mx-auto md:w-10/12">
+  <main class="px-12 w-full flex items-center justify-center mx-auto md:px-0 md:w-10/12">
     <c-card class="min-h-[70%] justify-between">
       <c-season-info/>
 
@@ -37,6 +37,7 @@ export default defineComponent( {
 
           <c-input v-model="form.password"
                    :error-msg="errorMsg.password"
+                   type="password"
                    :placeholder="$t('password')"/>
         </div>
 
