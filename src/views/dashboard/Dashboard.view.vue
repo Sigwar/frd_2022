@@ -26,7 +26,7 @@ export default defineComponent({
 <template>
   <nav-bar />
 
-  <div class="container">
+  <div class="container mx-auto my-10">
     <router-view />
   </div>
 </template>

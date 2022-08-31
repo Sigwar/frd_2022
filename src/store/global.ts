@@ -8,7 +8,7 @@ export const useGlobalStore = defineStore('globalStore', {
     } as RootStore),
     getters: {
         //Getters are just computed so we can not passed any params to them
-        getLang: (state: RootStore): string => state.lang,
+        getLang: (state: RootStore): String => state.lang,
     },
     actions: {
         changeLanguage(payload: string) {
@@ -19,7 +19,6 @@ export const useGlobalStore = defineStore('globalStore', {
             this.token = payload;
         },
         logOut(): void {
-            console.log(1)
             this.token = '';
             document.cookie = 'fifaToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/';
         },

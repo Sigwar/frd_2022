@@ -20,5 +20,8 @@
   "login is required": "Login jest wymagany",
   "password is required": "Hasło jest wymagane",
   "login is to short": "Login jest zbyt krótki",
-  "password is to short": "Hasło jest zbyt krótkie"
+  "password is to short": "Hasło jest zbyt krótkie",
+  "createNewSeason": "Stwórz nowy sezon",
+  "noSeasons": "Brak sezonów",
+  "seasons": "Sezony"
 }

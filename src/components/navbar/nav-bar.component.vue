@@ -3,6 +3,7 @@ import { defineComponent, reactive } from 'vue';
 import baseIcon from '@/components/base-icon/base-icon.component.vue';
 import { useGlobalStore } from '@/store/global';
 import { useRouter } from 'vue-router';
+import { NAVBAR_LINKS } from './navBar.type';
 
 export default defineComponent({
   name: 'navBar',
@@ -18,15 +19,20 @@ export default defineComponent({
     })
 
     const goTo = (link: string): void => {
-      if(link === 'logout') {
-        store.logOut();
-        router.push({name: 'Login'})
+      switch(link) {
+        case NAVBAR_LINKS.SEASONS:
+          router.push({name: 'Seasons'});
+          break;
+        case NAVBAR_LINKS.LOGOUT:
+          store.logOut();
+          router.push({name: 'Login'});
+          break;
       }
     }
 
     return {
-      navBar,
-      goTo
+      goTo,
+      navBar
     }
   }
 })

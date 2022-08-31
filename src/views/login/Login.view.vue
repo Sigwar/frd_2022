@@ -27,7 +27,9 @@ export default defineComponent( {
     <c-card class="min-h-[70%] justify-between">
       <c-season-info/>
 
-      <div class="w-full p-6 text-black flex flex-col justify-between h-[50vh] md:h-auto md:w-6/12">
+      <form @submit.prevent="loginUser"
+            class="w-full p-6 text-black flex flex-col justify-between h-[50vh] md:h-auto md:w-6/12">
+
         <h1 class="text-4xl sm:text-7xl">{{ $t('sign in') }}</h1>
 
         <div>
@@ -42,7 +44,7 @@ export default defineComponent( {
         </div>
 
         <div class="p-3">
-          <c-button @click="loginUser">{{ $t('sign in') }}</c-button>
+          <c-button type="submit">{{ $t('sign in') }}</c-button>
 
           <c-button class="mt-3"
                     button-type="borderless"
@@ -50,7 +52,7 @@ export default defineComponent( {
                     @click="goToRegisterPage">{{ $t('register new user') }}
           </c-button>
         </div>
-      </div>
+      </form>
     </c-card>
   </main>
 </template>

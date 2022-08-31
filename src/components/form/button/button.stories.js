@@ -1,7 +1,7 @@
 import cButton from './button.component.vue';
 import '../../../style.css'
 
-export default defineComponent( {
+export default  {
     title: 'Components/Forms/cButton',
     component: cButton,
     argTypes: {

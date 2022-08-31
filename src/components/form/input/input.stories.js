@@ -1,7 +1,7 @@
 import cInput from './input.component.vue';
 import '../../../style.css';
 
-export default defineComponent( {
+export default {
     title: 'Components/Forms/cInput',
     component: cInput,
 }
