@@ -1,7 +1,7 @@
 import cCard from './card.component.vue'
 import '../../style.css'
 
-export default {
+export default  {
     title: 'Components/cCard',
     component: cCard,
 }

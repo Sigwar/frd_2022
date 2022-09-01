@@ -1,11 +1,11 @@
 export type TRulesSettings = {
-    nick: number,
+    login: number,
     password: number
 }
 
 export type TRegisterForm = {
     email: string,
-    nick: string,
+    login: string,
     password: string,
     repeatPassword: string,
 }

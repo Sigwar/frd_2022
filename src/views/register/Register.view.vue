@@ -1,12 +1,12 @@
-<script>
+<script lang="ts">
+import {defineComponent} from 'vue';
 import cCard from '@/components/card/card.component.vue';
 import cInput from '@/components/form/input/input.component.vue';
 import cButton from '@/components/form/button/button.component.vue'
 import cSeasonInfo from '@/components/seasonInfo/season-info.component.vue';
+import { useRegister } from './hooks/useRegister';
 
-import { useRegister } from './hooks/useRegister.ts';
-
-export default {
+export default defineComponent( {
   name: 'vRegister',
   components: {
     cButton,
@@ -20,12 +20,12 @@ export default {
 
     return { form, errorMsg, registerUser, goToLoginPage }
   }
-}
+})
 </script>
 
 
 <template>
-  <main class="w-full flex items-center justify-center">
+  <main class="grid-main max-w-[64rem] px-12 w-full flex items-center justify-center mx-auto md:px-0 md:w-10/12">
     <c-card class="min-h-[70%]">
       <c-season-info />
 
@@ -33,9 +33,9 @@ export default {
         <h1 class="text-4xl sm:text-7xl"> {{ $t('sign up') }}</h1>
 
         <div>
-          <c-input v-model="form.nick"
-                   :error-msg="errorMsg.nick"
-                   :placeholder="$t('nick')"/>
+          <c-input v-model="form.login"
+                   :error-msg="errorMsg.login"
+                   :placeholder="$t('login')"/>
 
           <c-input v-model="form.email"
                    :error-msg="errorMsg.email"

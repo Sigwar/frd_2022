@@ -1,4 +1,4 @@
-const path = require('path'); // 👈 import path
+const path = require("path");
 
 module.exports = {
   "stories": [
@@ -14,14 +14,21 @@ module.exports = {
   "core": {
     "builder": "@storybook/builder-vite"
   },
-  "features": {
-    "storyStoreV7": true
-  },
-  webpackFinal: async (config) => { // 👈 and add this here
-    config.resolve.alias = {
-      ...config.resolve.alias,
-      '@': path.resolve(__dirname, '../src/'),
+  async viteFinal(config, { configType }) {
+    return {
+      ...config,
+      resolve: {
+        alias: [
+          {
+            find: "@",
+            replacement: path.resolve(__dirname, "../src"),
+          },
+          {
+            find: 'vue',
+            replacement: 'vue/dist/vue.esm-bundler.js'
+          }
+        ],
+      },
     };
-    return config;
   },
 }

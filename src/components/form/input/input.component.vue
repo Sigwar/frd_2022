@@ -1,7 +1,7 @@
-<script>
-import {computed, ref} from 'vue'
+<script lang="ts">
+import {computed, defineComponent, reactive, ref} from 'vue'
 
-export default {
+export default defineComponent( {
   name: 'cInput',
   props: {
     errorMsg: {
@@ -19,7 +19,7 @@ export default {
   },
   emits: ['update:modelValue'],
   setup(props) {
-    const input = ref(null);
+    const input = ref<HTMLElement | null>(null)
     const isFocus = ref(false);
 
     const isError = computed(() => {
@@ -27,7 +27,9 @@ export default {
     })
 
     const focusInput = () => {
-      input.value.focus();
+      if (input && input.value) {
+        input.value.focus();
+      }
       isFocus.value = true
     }
 
@@ -43,7 +45,7 @@ export default {
       isPlaceholderTop
     }
   }
-};
+});
 </script>
 
 <template>
