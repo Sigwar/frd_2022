@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
-import CHeader from "../../../components/header/header.component.vue";
+import CHeader from '@/components/header/header.component.vue';
 
 export default defineComponent({
   name: 'vSeasons',
@@ -22,7 +22,7 @@ export default defineComponent({
               name="seasons" />
 
   <main>
-    <span class="block mt-[30%]">
+    <span class="block mt-[10%]">
           {{$t('noSeasons')}}
     </span>
   </main>

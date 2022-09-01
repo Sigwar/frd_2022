@@ -25,7 +25,7 @@ export default defineComponent( {
 
 
 <template>
-  <main class="px-12 w-full flex items-center justify-center mx-auto md:px-0 md:w-10/12">
+  <main class="grid-main max-w-[64rem] px-12 w-full flex items-center justify-center mx-auto md:px-0 md:w-10/12">
     <c-card class="min-h-[70%]">
       <c-season-info />
 

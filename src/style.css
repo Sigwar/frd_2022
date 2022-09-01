@@ -75,13 +75,26 @@ input {
 .font-second {
     font-family: 'Dosis', sans;
 }
-#app {
-    width: 1280px;
-    height: 100vh;
-    margin: 0 auto;
-    text-align: center;
-    display: flex;
 
+.grid-main {
+    grid-area: main;
+}
+
+.grid-main-aside {
+    grid-column-start: main;
+    grid-column-end: aside;
+    max-width: 1680px;
+}
+
+#app {
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    text-align: center;
+    display: grid;
+    grid-template:
+            "nav main aside";
+    grid-template-columns: 5.875rem auto 5.875rem;
 }
 
 @media (prefers-color-scheme: light) {

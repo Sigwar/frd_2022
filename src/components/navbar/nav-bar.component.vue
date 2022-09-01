@@ -39,12 +39,13 @@ export default defineComponent({
 </script>
 
 <template>
-<nav class="cursor-pointer top-0 left-0 w-24 flex flex-col h-[100vh] items-center justify-center border-r-2 border-solid border-neutral-200 dark:border-neutral-700">
+<nav class="fixed top-0 left-0 w-24 flex flex-col h-[100vh] items-center justify-center border-r-2 border-solid border-neutral-200 dark:border-neutral-700">
 
   <base-icon v-for="link in navBar.links"
              :key="link"
              :icon="link"
-             @click="goTo(link)" />
+             @click="goTo(link)"
+             class="cursor-pointer" />
 </nav>
 </template>
 

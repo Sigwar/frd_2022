@@ -26,7 +26,7 @@ export default defineComponent({
 <template>
   <nav-bar />
 
-  <div class="container mx-auto my-10">
+  <div class="grid-main-aside w-full mx-auto my-10 px-10">
     <router-view />
   </div>
 </template>
