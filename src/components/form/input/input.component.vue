@@ -59,6 +59,7 @@ export default defineComponent( {
              @input="$emit('update:modelValue', $event.target.value)"
              @focus="isFocus = true"
              @focusout="isFocus = false"
+             autocomplete="new-password"
              class="h-[60px] py-2 focus:border-primary-500 border-2 bg-transparent px-2 outline-none w-full text-lg d-flex items-center disabled:opacity-75"/>
 
       <span v-if="placeholder"

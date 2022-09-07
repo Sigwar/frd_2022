@@ -23,5 +23,6 @@
   "password is to short": "Hasło jest zbyt krótkie",
   "createNewSeason": "Stwórz nowy sezon",
   "noSeasons": "Brak sezonów",
-  "seasons": "Sezony"
+  "seasons": "Sezony",
+  "createNewSeasons": "Tworzenie nowego sezonu"
 }
