@@ -7,7 +7,7 @@ export default {
 }
 
 export const Default = (args) => ({
-    components: {cInput},
+    components: { cInput },
     setup() {
         return {args}
     },

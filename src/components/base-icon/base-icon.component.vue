@@ -5,6 +5,7 @@ import seasons from './icons/seasons.icon.vue';
 import ranking from './icons/ranking.icon.vue';
 import settings from './icons/settings.icon.vue';
 import logout from './icons/logout.icon.vue';
+import cross from './icons/cross.icon.vue'
 
 export default defineComponent({
   name: 'baseIcon',
@@ -12,9 +13,14 @@ export default defineComponent({
     icon: {
       type: String,
       default: () => 'logout'
+    },
+    showText: {
+      type: Boolean,
+      default: false,
     }
   },
   components: {
+    cross,
     seasons,
     logout,
     tournament,
@@ -26,10 +32,11 @@ export default defineComponent({
 
 
 <template>
-  <div class="flex flex-col items-center justify-center py-4">
+  <div class="py-2">
     <component :is="icon"
-               height="32"
-               width="32" />
-    <span>{{ icon.toLocaleUpperCase() }}</span>
+               height="30"
+               width="30" />
+
+    <span v-if="showText">{{ icon.toLocaleUpperCase() }}</span>
   </div>
 </template>

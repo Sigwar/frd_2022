@@ -45,7 +45,8 @@ export default defineComponent({
              :key="link"
              :icon="link"
              @click="goTo(link)"
-             class="cursor-pointer" />
+             showText
+             class="cursor-pointer flex flex-col justify-center items-center" />
 </nav>
 </template>
 
